@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathaniel Nim - Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f8fafc;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0077b6, #0096c7, #00b4d8);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+      animation: rotateBg 18s linear infinite;
+    }
+
+    header img {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      animation: zoomIn 2s ease;
+      z-index: 2;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3em;
+      letter-spacing: 1px;
+      animation: fadeDown 1.2s ease;
+      z-index: 2;
+    }
+
+    header p {
+      margin: 10px 0;
+      font-size: 1.2em;
+      animation: fadeUp 2s ease;
+      z-index: 2;
+    }
+
+    /* Section Style */
+    section {
+      max-width: 900px;
+      margin: 70px auto;
+      padding: 50px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(70px);
+      transition: all 1s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #0077b6;
+      margin-bottom: 25px;
+      position: relative;
+      font-size: 1.8em;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #00b4d8;
+      border-radius: 2px;
+    }
+
+    /* Skills Progress Bars */
+    .skill-bar {
+      margin: 20px 0;
+    }
+    .skill-bar span {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .bar {
+      background: #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 14px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #0077b6, #00b4d8);
+      width: 0;
+      transition: width 2s ease;
+    }
+
+    /* Timeline for Education */
+    /* Timeline Fix */
+.timeline {
+    position: relative;
+    margin: 50px 0;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #4facfe;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px; /* more space between items */
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -27px; /* aligns bullets properly */
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #43e97b;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(67, 233, 123, 0.7);
+}
+
+.timeline-item h3 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.timeline-item p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+    /* Scroll to top button */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    #scrollTopBtn:hover {
+      transform: translateY(-5px);
+      background: #00b4d8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #0077b6;
+      color: white;
+      margin-top: 60px;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeRight {
+      from { transform: translateX(-60px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="Media.jpg" alt="Nathaniel Nim">
+    <h1>NATHANIEL G. NIM</h1>
+    <p>09919588036 | nathaniellnim22@gmail.com | Bacolod City</p>
+  </header>
+
+  <section class="about">
+    <h2>About Me</h2>
+    <p>A recent graduate with a Bachelor’s degree in Robotics and Information Technology, passionate about developing intelligent systems. Skilled in programming, control systems, microcontrollers, and robotics software frameworks, with interests in AI, automation, and optimization.</p>
+  </section>
+
+  <section class="skills">
+    <h2>Skills</h2>
+    <div class="skill-bar">
+      <span>Hardware Specialist in Robotics</span>
+      <div class="bar"><div class="progress" data-width="90%"></div></div>
+    </div>
+    <div class="skill-bar">
+      <span>Software Specialist in Robotics</span>
+      <div class="bar"><div class="progress" data-width="85%"></div></div>
+    </div>
+  </section>
+
+  <section class="education">
+    <h2>Education</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p><strong>Bachelor of Science in Information Technology</strong><br>STI West Negros University</p>
+      </div>
+      <div class="timeline-item">
+        <p><strong>Secondary Education</strong><br>Bacolod City National High School</p>
+      </div>
+      <div class="timeline-item">
+        <p><strong>Primary Education</strong><br>Kabugwason Elementary School</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="personal">
+    <h2>Personal Information</h2>
+    <p><strong>Age:</strong> 24</p>
+    <p><strong>Gender:</strong> Male</p>
+    <p><strong>Birth Date:</strong> Feb 22, 2001</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Nathaniel G. Nim | Portfolio</p>
+  </footer>
+
+  <button id="scrollTopBtn">↑</button>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.2 };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+
+          if(entry.target.classList.contains('skills')){
+            document.querySelectorAll('.progress').forEach(bar => {
+              bar.style.width = bar.getAttribute('data-width');
+            });
+          }
+
+          if(entry.target.classList.contains('education')){
+            entry.target.querySelectorAll('.timeline-item').forEach((item, index) => {
+              setTimeout(() => {
+                item.style.opacity = '1';
+              }, index * 400);
+            });
+          }
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.style.display = "flex";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
